@@ -1,0 +1,58 @@
+<div class="icon " style="display: flex; justify-content: end;">
+  <div class="con d-flex mt-5 btn-a">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi  bi-eye-fill" viewBox="0 0 16 16">
+      <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+      <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+    </svg>
+    <p class="text" style="margin-left: 5px;" routerLink="/add" >View Books</p>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"  class="bi add-icon-1 text-secondary m-5 bi-plus-circle-fill" viewBox="0 0 16 16" title="Add New Book">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+  </svg>
+</div>
+<div class="container">
+  <div class="row justify-content-between" >
+      <div class="col-4 mt-3"  id="cardfeature" *ngFor="let book of books">
+        <div class="card m-2" style="width: 18rem;" >
+          <img src={{book.image}}  class="card-img-top" alt="..." style="height: 400px;">
+          <div class="card-body" style="display: flex; justify-content: center;">
+            <button type="button" (click)="onSelect(book)" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none;  background-color: lightblue;">
+
+              <h5 class="card-title">{{book.bookName}}</h5>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="exampleModal"*ngIf="select">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{select.bookName}}</h5>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+          <div class="d-flex">
+            <div class="photo" style="display: flex; justify-content: center;">
+              <img [src]="select.image" width="" height="150px" style="margin-right: 30px;">
+            </div>
+            <div class="description">
+              <h6>Description: </h6>
+              <p>{{select.description}}</p>
+      
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="bg-dark p-2 m-2" style="width: 110px; color: white; border-radius: 10px;" data-bs-dismiss="modal">Home</button>
+          <!-- <button type="button" class="btn btn-primary">Home</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+

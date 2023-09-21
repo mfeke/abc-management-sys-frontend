@@ -1,0 +1,17 @@
+.btn {
+
+ margin-left: 700px;
+ font-weight: bold;
+ background-color:black !important;
+ color:white;
+}
+.form-control{
+  position: relative;
+  left: 700px;
+
+}
+.nav-link{
+  font-weight: bold;
+  margin-left: 10px;
+  text-align: inline;
+}

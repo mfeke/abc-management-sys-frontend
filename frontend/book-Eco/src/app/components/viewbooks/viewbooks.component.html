@@ -1,0 +1,134 @@
+
+<div class="wrapper">
+    <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex flex-column">
+            <div class="h3">View Books</div>
+        </div>
+        <div class="ml-auto btn"><span class="fas fa-cog"></span></div>
+        <!-- <div class="btn" id="sub">
+            + Add sublist
+        </div> -->
+    </div>
+    <div id="table" class="bg-white rounded">
+        <div class="d-md-flex align-items-md-center px-3 pt-3">
+            <div class="d-flex flex-column" >
+                <div class="h4 font-weight-bold">Book List</div>
+                <div class="text-muted">{{items}} items</div>
+            </div>
+        </div>
+        <hr>
+        <div class="table-responsive">
+            <table class="table activitites">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-uppercase header">Book name</th>
+                        <th scope="col" class="text-uppercase">Author</th>
+                        <th scope="col" class="text-uppercase">selling price</th>
+                        <th scope="col" class="text-uppercase">description</th>
+                        <th scope="col" class="text-uppercase">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books">
+                        <td class="item">
+                            <div class="d-flex align-items-start">
+                                <img [src]="book.image" alt="" class="booking m-3" >
+                                <div>
+                                    {{book.bookName}}
+                                    <div class="text-uppercase new"><span class="fas fa-star"></span>new</div>
+                                    <div>
+                                        <button class="btn" style="border: none; " type="button" >
+                                            <span class="red text-uppercase" (click)="onSelected(book)" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                                                <span class="fas fa-comment pr-1"  ></span>
+                                                Update Book
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            {{book.author}}
+                        </td>
+                        <td>
+                            R {{book.sellingPrice}}
+                        </td>
+                        <td>{{book.description}}
+                        </td>
+                        <td>
+                          <button type="button" class="btn" (click)="deleteBook(book)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" fill="currentColor" class="bi bi-trash3-fill text-danger  mt-2" viewBox="0 0 16 16">
+                              <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                            </svg>
+                          </button>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade h-vh-2" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+        </div>
+        <div class="modal-body">
+            <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+                <div class="wrapper wrapper--w680">
+                    <div class="card card-1">
+                        <div class="card-heading"></div>
+                        <div class="card-body" *ngIf="selectBook" >
+                            <form method="POST">
+                                <div class="input-group">
+                                  <label for="">Book Title </label>
+                                    <input class="input--style-1" type="text" placeholder="Book Title " name="name"  [(ngModel)]="selectBook.bookName" #bookName>
+                                </div>
+
+                                <div class="row row-space">
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                          <label for="">Author</label>
+                                            <input class="input--style-1 js-datepicker" type="text" placeholder="Author" name="author"  [(ngModel)]="selectBook.author" #author>
+                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-2">
+                                        <div class="input-group">
+                                          <label for="">Book Price</label>
+                                            <input class="input--style-1 js-datepicker" type="text" placeholder="Book Price" name="bookPrice"  [(ngModel)]="selectBook.sellingPrice" size="48"#sellingPrice>
+                                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                  <label for="">Book Description</label>
+                                    <input class="input--style-1 js-datepicker" type="text" placeholder="Description" name="description" [(ngModel)]="selectBook.description" size="48" #description >
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                </div>
+                                <div class="input-group">
+                                  <label for="">Image URL</label>
+                                    <input class="input--style-1 js-datepicker" type="text" placeholder="URL Image" name="image" [(ngModel)]="selectBook.image" #image >
+                                    <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                </div>
+                                <div class="p-t-20">
+                                    <button class="btn btn--radius btn--green bg-dark w-100 text-light" type="submit" (click)="save()">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+

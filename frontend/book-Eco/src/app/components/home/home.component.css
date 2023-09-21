@@ -1,0 +1,34 @@
+.card-body{
+  background-color: lightblue;
+  height: 50%;
+
+}
+
+.btn-a:hover{
+  color: wheat;
+  height: 40px;
+  padding: 6px;
+  border: gray 1px solid;
+  border-radius: 5px;
+
+}
+.btn-a{
+  background-color: black;
+  color: white;
+  height: 40px;
+  padding: 6px;
+  border: gray 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.card-title{
+  text-align: center;
+  font-weight: bold;
+  padding-top: 3px;
+  /* background-color: lightgray; */
+  height: 30px;
+  padding-bottom:  10px;
+  border-radius: 10px;
+}
+
+
